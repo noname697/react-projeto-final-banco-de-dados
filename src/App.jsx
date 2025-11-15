@@ -1,11 +1,5 @@
+import { useState } from "react";
 import styled from "styled-components";
-
-const darkBackground = "#1a202c";
-const boxBackground = "#2d3748";
-const primaryBlue = "#4299e1";
-const hoverBlue = "#3182ce";
-const lightText = "#cbd5e0";
-const titleBlue = "#63b3ed";
 
 const GlobalContainer = styled.div`
   display: flex;
@@ -13,52 +7,47 @@ const GlobalContainer = styled.div`
   align-items: center;
   min-height: 100vh;
   min-width: 100vw;
-  background-color: ${darkBackground};
+  background-color: #1a202c; /* darkBackground */
   font-family: "Arial, sans-serif";
 `;
-
 const LoginBox = styled.div`
-  background-color: ${boxBackground};
+  background-color: #2d3748; /* boxBackground */
   padding: 40px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Sombra mais escura para tema escuro */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   width: 350px;
   text-align: center;
 `;
-
 const Title = styled.h2`
   font-family: sans-serif;
-  color: ${titleBlue};
+  color: #63b3ed; /* titleBlue */
   margin-bottom: 30px;
 `;
-
 const InputGroup = styled.div`
   margin-bottom: 20px;
 `;
-
 const Input = styled.input`
   width: calc(100% - 20px);
   padding: 12px 10px;
   border-radius: 5px;
-  border: 1px solid ${primaryBlue};
-  background-color: ${boxBackground};
-  color: ${lightText};
+  border: 1px solid #4299e1; /* primaryBlue */
+  background-color: #2d3748; /* boxBackground */
+  color: #cbd5e0; /* lightText */
   font-size: 16px;
   outline: none;
 
   &:focus {
-    border-color: ${titleBlue};
-    box-shadow: 0 0 0 1px ${titleBlue};
+    border-color: #63b3ed; /* titleBlue */
+    box-shadow: 0 0 0 1px #63b3ed; /* titleBlue */
   }
 `;
-
 const Button = styled.button`
   font-family: sans-serif;
   width: 100%;
   padding: 12px;
   border-radius: 5px;
   border: none;
-  background-color: ${primaryBlue};
+  background-color: #4299e1; /* primaryBlue */
   color: white;
   font-size: 18px;
   font-weight: 100;
@@ -66,7 +55,7 @@ const Button = styled.button`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: ${hoverBlue};
+    background-color: #3182ce; /* hoverBlue */
   }
 
   ${InputGroup}:last-of-type & {
@@ -75,20 +64,31 @@ const Button = styled.button`
 `;
 
 function App() {
+  const [login, setLogin] = useState("");
+  const [senha, setSenha] = useState("");
+
   return (
     <GlobalContainer>
       <LoginBox>
         <Title>Login</Title>
 
         <InputGroup>
-          <Input type="text" placeholder="Username" />
+          <Input
+            type="text"
+            placeholder="Username"
+            onChange={(e) => setLogin(e.target.value)}
+          />
         </InputGroup>
 
         <InputGroup>
-          <Input type="password" placeholder="Password" />
+          <Input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setSenha(e.target.value)}
+          />
         </InputGroup>
 
-        <Button>Entrar</Button>
+        <Button onClick={() => {}}>Entrar</Button>
       </LoginBox>
     </GlobalContainer>
   );
